@@ -33,7 +33,9 @@ export default function GameDetail() {
   const params = useParams<GameAds>();
 
   useEffect(() => {
-    axios(`http://localhost:3333/games/${params.id}/ads`).then((response) => {
+    axios(
+      `https://e-sports-server-devsantosbruno.vercel.app/games/${params.id}/ads`
+    ).then((response) => {
       setAds(response.data);
     });
   }, []);

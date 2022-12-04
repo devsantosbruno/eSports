@@ -35,9 +35,11 @@ export function CreateAdModal() {
   const [gameChanged, setGameChanged] = useState(false);
 
   useEffect(() => {
-    axios("http://localhost:3333/games").then((response) => {
-      setGames(response.data);
-    });
+    axios("https://e-sports-server-devsantosbruno.vercel.app/games").then(
+      (response) => {
+        setGames(response.data);
+      }
+    );
   }, []);
 
   // react hook form
@@ -45,15 +47,18 @@ export function CreateAdModal() {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      await axios.post(`http://localhost:3333/games/${game}/ads`, {
-        name: data.name,
-        yearsPlaying: Number(data.yearsPlaying),
-        discord: data.discord,
-        weekDays: weekDays.map(Number),
-        hourStart: data.hourStart,
-        hourEnd: data.hourEnd,
-        useVoiceChannel: useVoiceChannel,
-      });
+      await axios.post(
+        `https://e-sports-server-devsantosbruno.vercel.app/games/${game}/ads`,
+        {
+          name: data.name,
+          yearsPlaying: Number(data.yearsPlaying),
+          discord: data.discord,
+          weekDays: weekDays.map(Number),
+          hourStart: data.hourStart,
+          hourEnd: data.hourEnd,
+          useVoiceChannel: useVoiceChannel,
+        }
+      );
       alert("anuncio criado com sucesso!");
     } catch (err) {
       console.log(err);

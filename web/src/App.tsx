@@ -28,9 +28,11 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios("http://localhost:3333/games").then((response) => {
-      setGames(response.data);
-    });
+    axios("https://e-sports-server-devsantosbruno.vercel.app/games").then(
+      (response) => {
+        setGames(response.data);
+      }
+    );
   }, []);
 
   return (
